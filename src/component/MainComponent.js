@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieCard from '../MovieCard';
+import MovieCard from './MovieCard';
 
 function MainComponent(props) {
   console.log(props);
