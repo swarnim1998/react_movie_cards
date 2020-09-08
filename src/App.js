@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './component/Header';
+import MainComponent from './component/MainComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const API_KEY = 'b166498855b6dce6eaf5daea81a83645';
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      search: '',
+      movies: [],
+    };
+  }
+
+  onChange(event) {
+    this.setState({
+      search: event.target.value,
+    });
+    fetch(
+      'https://api.themoviedb.org/3/search/movie?api_key=' +
+        API_KEY +
+        '&language=en-US&query=' +
+        this.state.search +
+        '&page=1&include_adult=false'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          movies: data.results,
+        });
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <input
+          type='text'
+          placeholder='Enter Movie Name'
+          onChange={(event) => this.onChange(event)}
+        />
+        <MainComponent movieList={this.state.movies} />
+      </div>
+    );
+  }
 }
 
 export default App;
