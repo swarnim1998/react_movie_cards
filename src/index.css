@@ -17,6 +17,7 @@ nav {
 
 .container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: gainsboro;
 }
@@ -34,6 +35,7 @@ nav {
 p {
   height: 10em;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 input {
@@ -58,6 +60,6 @@ img {
   margin-left: 1em;
 }
 
-.makeStyles-root-1 {
+.jss3 {
   margin-left: 1em;
 }
