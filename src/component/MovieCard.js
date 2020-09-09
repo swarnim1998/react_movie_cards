@@ -6,7 +6,10 @@ function MovieCard(props) {
   return (
     <div className='card'>
       <div className='cardImage'>
-        <img src={imgbaseurl + props.data.poster_path} alt='its not showing' />
+        <img
+          src={imgbaseurl + props.data.poster_path}
+          alt='poster not available'
+        />
       </div>
       <div className='cardBody'>
         <h3> {props.data.title}</h3>

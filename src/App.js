@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from './component/Header';
 import MainComponent from './component/MainComponent';
+import Input from './component/Input';
+import About from './component/About';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const API_KEY = 'b166498855b6dce6eaf5daea81a83645';
 
@@ -13,7 +16,7 @@ class App extends React.Component {
     };
   }
 
-  onChange(event) {
+  onChange = (event) => {
     this.setState({
       search: event.target.value,
     });
@@ -29,20 +32,24 @@ class App extends React.Component {
         this.setState({
           movies: data.results,
         });
-      });
-  }
+      })
+      .catch((err) => console.error(err));
+  };
 
   render() {
     return (
-      <div>
-        <Header />
-        <input
-          type='text'
-          placeholder='Enter Movie Name'
-          onChange={(event) => this.onChange(event)}
-        />
-        <MainComponent movieList={this.state.movies} />
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path='/'>
+              <Input onChange={this.onChange} />
+              <MainComponent movieList={this.state.movies} />
+            </Route>
+            <Route path='/about' component={About} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
