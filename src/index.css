@@ -17,9 +17,12 @@ nav {
 
 li {
   list-style: none;
-  text-decoration: none;
   color: whitesmoke;
   font-family: sans-serif;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .container {

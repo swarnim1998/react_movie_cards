@@ -11,15 +11,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      search: '',
+      search: 'Spiderman',
       movies: [],
     };
   }
 
+  componentDidMount() {
+    this.onChange(this.state.search);
+  }
+
   onChange = (event) => {
-    this.setState({
-      search: event.target.value,
-    });
+    if (typeof event === 'object') {
+      this.setState({
+        search: event.target.value,
+      });
+    }
     fetch(
       'https://api.themoviedb.org/3/search/movie?api_key=' +
         API_KEY +

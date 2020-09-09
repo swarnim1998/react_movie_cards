@@ -5,10 +5,10 @@ function Header() {
   return (
     <nav>
       <h1>React Movie Cards</h1>
-      <Link to='/'>
+      <Link className='link' to='/'>
         <li>Home</li>
       </Link>
-      <Link to='/about'>
+      <Link className='link' to='/about'>
         <li>About</li>
       </Link>
     </nav>

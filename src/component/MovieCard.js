@@ -8,7 +8,11 @@ function MovieCard(props) {
       <div className='cardImage'>
         <img
           src={imgbaseurl + props.data.poster_path}
-          alt='poster not available'
+          alt='poster not found'
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = '../images/pngtree2.jpg';
+          }}
         />
       </div>
       <div className='cardBody'>
