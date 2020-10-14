@@ -1,25 +1,23 @@
-import React from 'react';
-import StarRating from './StarRating';
+import React from "react";
 
-const imgbaseurl = 'https://image.tmdb.org/t/p/w500';
 function MovieCard(props) {
   return (
-    <div className='card'>
-      <div className='cardImage'>
+    <div className="card">
+      <div className="cardImage">
         <img
-          src={imgbaseurl + props.data.poster_path}
-          alt='poster not found'
+          src={props.data.Poster}
+          alt="poster not found"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = '../images/pngtree2.jpg';
+            e.target.src = "../images/pngtree2.jpg";
           }}
         />
       </div>
-      <div className='cardBody'>
-        <h3> {props.data.title}</h3>
-        <p>{props.data.overview}</p>
+      <div className="cardBody">
+        <h3> {props.data.Title}</h3>
+        <h3>Type: {props.data.Type} </h3>
+        <h3>Year: {props.data.Year} </h3>
       </div>
-      <StarRating rating={props.data.vote_average / 2} />
     </div>
   );
 }

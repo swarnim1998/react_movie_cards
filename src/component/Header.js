@@ -1,16 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
 function Header() {
   return (
-    <nav>
+    <nav
+      className="d-flex justify-content-around align-items-center"
+      style={{ position: "fixed", width: "100%", zIndex: "1" }}
+    >
       <h1>React Movie Cards</h1>
-      <Link className='link' to='/'>
-        <li>Home</li>
-      </Link>
-      <Link className='link' to='/about'>
-        <li>About</li>
-      </Link>
+      <li>Home</li>
+
+      <li>About</li>
     </nav>
   );
 }
